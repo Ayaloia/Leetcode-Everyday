@@ -1,2 +1,2 @@
 # Leetcode-Everyday
-Just For Fun
+I'm following the wind.  
