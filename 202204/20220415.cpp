@@ -2,6 +2,9 @@
 // Created by aldlss on 2022/4/15.
 //
 
+//题目有点含糊不清，本来今天就没什么时间，结果这题目阅读理解我也不太会
+//结果最后还是理解错了，看了看别人的代码，属实惊为天人，只能膜拜了……
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -36,47 +39,22 @@ public:
 class Solution {
 public:
     NestedInteger deserialize(string s) {
-        NestedInteger ans,*now=&ans;
-        int sum=0,flag=1;
+        NestedInteger ans;
         if(s.empty())return {};
         if(s[0]!='[')return {stoi(s)};
         if(s.length()<=2)return {};
-        for(char q:s)
+        int start=1,cnt=0;
+        for(int i=1;i<s.length();++i)
         {
-            if(q>='0'&&q<='9')
+            if(!cnt&&(s[i]==','||i==s.length()-1))
             {
-                sum*=10;
-                sum+=q-'0';
+                ans.add(deserialize(s.substr(start,i-start)));
+                start=i+1;
             }
-            else if(q=='-')
-            {
-                flag=-1;
-            }
-//            else if(q==']'||q==',')
-//            {
-//                if(sum)
-//                {
-//                    NestedInteger *mark=new NestedInteger(sum*flag);
-//                    now->add(*mark);
-//                    flag=1;
-//                    sum=0;
-//                }
-//                if(q==']')
-//                {
-//                    level.pop_back();
-//                    now=level.back();
-//                }
-//            }
-            else if(q=='[')
-            {
-                ans.add(deserialize(s.substr()))
-            }
-        }
-        if(sum)
-        {
-            now->setInteger(sum*flag);
-            flag=1;
-            sum=0;
+            if(s[i]=='[')
+                ++cnt;
+            else if(s[i]==']')
+                --cnt;
         }
         return ans;
     }
