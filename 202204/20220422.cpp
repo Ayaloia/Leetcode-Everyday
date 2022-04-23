@@ -2,6 +2,9 @@
 // Created by aldlss on 2022/4/22.
 //
 
+//396. 旋转函数
+//不难，有点考数学，不过昨天没时间写完，可惜了
+
 #include <bits/stdc++.h>
 using namespace std;
 class Solution {
